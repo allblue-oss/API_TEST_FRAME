@@ -8,13 +8,17 @@
 
 import requests
 
+
 host = 'https://api.weixin.qq.com'
+session = requests.session()
 # 获取token
 params = {
-    'grant_type':'client_credential',
-    'appid':'wx55614004f367f8ca',
-    'secret':'65515b46dd758dfdb09420bb7db2c67f'
+    'grant_type': 'client_credential',
+    'appid': 'wxdd1e072d49643bf0',
+    'secret': 'c6868a07c562c932292eabdccda250a6'
 }
 
-res01 = requests.get(url= host+'cgi-bin/token',params=params)
+res01 = session.get(url=host + '/cgi-bin/token', params=params)
+
+# token_id = res01.json()['access_token']
 print(res01.json())
