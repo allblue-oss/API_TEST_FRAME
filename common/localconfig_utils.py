@@ -18,7 +18,7 @@ class LocalconfigUtils():
         self.cfg = configparser.ConfigParser()
         self.cfg.read(config_path, encoding='utf-8')
 
-    @property      #把方法变为属性方法
+    @property  # 把方法变为属性方法
     def URL(self):
         url_value = self.cfg.get('default', 'URL')
         return url_value
@@ -38,12 +38,16 @@ class LocalconfigUtils():
         log_level_value = int(self.cfg.get('log', 'LOG_LEVEL'))
         return log_level_value
 
+    @property
+    def PRIVATE_KEY(self):
+        private_key_value = self.cfg.get('easypay_test_merchant_info', 'PRIVATE_KEY')
+        return private_key_value
+
     '''若配置文件有新增，应在此处新增属性方法'''
 
 
-local_config = LocalconfigUtils()  #创建对象
-
+local_config = LocalconfigUtils()  # 创建对象
 
 if __name__ == '__main__':
     config = LocalconfigUtils()
-    print(local_config.CASE_DATA_PATH)
+    print(local_config.PRIVATE_KEY)
