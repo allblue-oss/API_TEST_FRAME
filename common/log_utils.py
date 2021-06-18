@@ -9,7 +9,8 @@
 import os
 import logging
 import time
-from common.localconfig_utils import local_config
+# from common.localconfig_utils import local_config
+from API_TEST_FEAME.common.localconfig_utils import local_config
 
 current_path = os.path.dirname(__file__)
 log_out_path = os.path.join(current_path, '..', local_config.LOG_PATH)

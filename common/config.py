@@ -7,7 +7,8 @@
 # @Software: PyCharm
 
 import os
-from common.config_utils import ConfigUtils
+# from common.config_utils import ConfigUtils
+from API_TEST_FEAME.common.config_utils import ConfigUtils
 
 config_path = os.path.join(os.path.dirname(__file__), '..', 'conf/config.ini')
 configUtils = ConfigUtils(config_path)

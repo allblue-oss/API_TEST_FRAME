@@ -12,7 +12,8 @@ from Crypto.PublicKey import RSA
 from Crypto.Signature import PKCS1_v1_5
 from Crypto.Hash import SHA1
 import base64
-from common.localconfig_utils import local_config
+from API_TEST_FEAME.common.localconfig_utils import local_config
+
 
 def rsa_sign(message):
     msg = message.encode('utf-8')
