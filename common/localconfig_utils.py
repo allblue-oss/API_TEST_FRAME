@@ -43,6 +43,46 @@ class LocalconfigUtils():
         private_key_value = self.cfg.get('easypay_test_merchant_info', 'PRIVATE_KEY')
         return private_key_value
 
+    @property
+    def REPORT_PATH(self):
+        report_path_value = self.cfg.get('path', 'REPORT_PATH')
+        return report_path_value
+
+    @property
+    def CASE_PATH(self):
+        case_path_value = self.cfg.get('path', 'CASE_PATH')
+        return case_path_value
+
+    @property
+    def SMTP_SERVER(self):
+        smtp_server_value = self.cfg.get('email', 'smtp_server')
+        return smtp_server_value
+
+    @property
+    def SMTP_PASSWORD(self):
+        smtp_password_value = self.cfg.get('email', 'smtp_password')
+        return smtp_password_value
+
+    @property
+    def SMTP_SENDER(self):
+        smtp_sender_value = self.cfg.get('email', 'smtp_sender')
+        return smtp_sender_value
+
+    @property
+    def SMTP_RECEIVER(self):
+        smtp_receiver_value = self.cfg.get('email', 'smtp_receiver')
+        return smtp_receiver_value
+
+    @property
+    def SMTP_CC(self):
+        smtp_cc_value = self.cfg.get('email', 'smtp_cc')
+        return smtp_cc_value
+
+    @property
+    def SMTP_SUBJECT(self):
+        smtp_subject_value = self.cfg.get('email', 'smtp_subject')
+        return smtp_subject_value
+
     '''若配置文件有新增，应在此处新增属性方法'''
 
 
@@ -50,4 +90,4 @@ local_config = LocalconfigUtils()  # 创建对象
 
 if __name__ == '__main__':
     config = LocalconfigUtils()
-    print(local_config.PRIVATE_KEY)
+    print(local_config.CASE_PATH)

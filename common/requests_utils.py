@@ -118,7 +118,7 @@ class RequestsUtils():
         self.temp_variables = {}  # 清空临时变量
         for step_info in step_infos:
             temp_result = self.request(step_info)
-            print(temp_result)
+            # print(temp_result)
             if temp_result['code'] != 0:
                 break
         return temp_result
