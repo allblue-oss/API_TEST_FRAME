@@ -10,6 +10,7 @@ import ast
 import re
 import requests
 import jsonpath
+from nb_log import LogManager
 # from common.localconfig_utils import local_config
 from API_TEST_FEAME.common.localconfig_utils import local_config
 from API_TEST_FEAME.common.check_utils import CheckUtils
@@ -18,6 +19,7 @@ from requests.exceptions import ProxyError
 from requests.exceptions import ConnectionError
 from API_TEST_FEAME.common.testdata_utils import TestdataUtils
 
+logger = LogManager(__file__).get_logger_and_add_handlers()
 
 class RequestsUtils():
     def __init__(self):
@@ -110,17 +112,22 @@ class RequestsUtils():
                 result = self.__post(step_info)
             else:
                 result = {'code': 1, 'result': '请求方式不支持'}
+                logger.error('请求方式不支持')
         except Exception as e:
             result = {'code': 4, 'result': '用例编号[%s]的[%s]步骤出现系统异常,原因:%s' % (step_info['测试用例编号'],step_info['测试用例步骤'],e.__str__())}
+            logger.error('用例编号[%s]的[%s]步骤出现系统异常,原因:%s' % (step_info['测试用例编号'],step_info['测试用例步骤'],e.__str__()))
         return result
 
     def request_by_step(self, step_infos):
         self.temp_variables = {}  # 清空临时变量
         for step_info in step_infos:
             temp_result = self.request(step_info)
-            # print(temp_result)
+            print(temp_result)
             if temp_result['code'] != 0:
+                TestdataUtils().write_result_to_excel(step_info['测试用例编号'],step_info['测试用例步骤'],'失败')
                 break
+            else:
+                TestdataUtils().write_result_to_excel(step_info['测试用例编号'], step_info['测试用例步骤'])
         return temp_result
 
 
